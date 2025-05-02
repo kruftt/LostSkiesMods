@@ -36,20 +36,19 @@ namespace PointToInteract
                     QueryTriggerInteraction.Collide
                 );
 
-                int i, j;
+                int hits = 0;
                 int[] colliderIDs = new int[ray_hits];
 
-                for (i = 0; i < ray_hits; i++)
+                for (int i = 0; i < ray_hits; i++)
                 {
                     colliderIDs[i] = _occlusionCheckBuffer[i].colliderInstanceID;
                 }
 
-                int hits = 0;
-                for (i = 0; i < resultCount; i++) {
+                for (int i = 0; i < resultCount; i++) {
                     Collider collider = _interactablesNearby[i];
                     int colliderID = collider.GetInstanceID();
                     
-                    for (j = 0; j < ray_hits; j++ ) {
+                    for (int j = 0; j < ray_hits; j++ ) {
                         if (colliderIDs[j] == colliderID)
                         {
                             _interactablesNearby[hits] = collider;
