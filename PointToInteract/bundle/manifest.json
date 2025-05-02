@@ -1,0 +1,9 @@
+{
+    "name": "Point_To_Interact",
+    "version_number": "0.1.2",
+    "website_url": "",
+    "description": "Filters interaction options using the cursor.",
+    "dependencies": [
+        "BepInEx-BepInExPack_IL2CPP-6.0.733"
+    ]
+}

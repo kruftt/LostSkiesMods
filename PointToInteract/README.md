@@ -1,0 +1,14 @@
+# Point To Interact
+
+Filters interaction options using the cursor.
+
+If one object occludes another but both are still "under the cursor" both will be displayed in the interaction menu. This is necessary for some objects, such as the ammo boxes, to be accessible.
+
+Note that some objects have collision that goes beyond their visible range. 
+
+Special thanks to CharlesE2, Nines, Azim, and the modding community for helping write and improve this mod.
+
+[Lost Skies Discord](https://discord.gg/QWtTAnbvqz)  
+[Lost Skies Modding Server](https://discord.gg/zVXAPcHqDV)  
+
+`Discord` Kruft#6332  

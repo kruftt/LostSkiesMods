@@ -1,0 +1,9 @@
+{
+    "name": "No_Deathbag",
+    "version_number": "0.1.0",
+    "website_url": "",
+    "description": "Prevents your character from dropping a deathbag.",
+    "dependencies": [
+        "BepInEx-BepInExPack_IL2CPP-6.0.733"
+    ]
+}

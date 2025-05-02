@@ -1,0 +1,11 @@
+.vs/
+bin/
+obj/
+dist/
+Libs/
+oldLibs/
+plugins.sln
+*.csproj
+bundle.bat
+EnableQuantumConsole/
+PrintCommandList/

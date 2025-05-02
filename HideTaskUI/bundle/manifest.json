@@ -1,0 +1,9 @@
+{
+    "name": "Hide_Task_UI",
+    "version_number": "0.1.0",
+    "website_url": "",
+    "description": "Hides the quest tracking UI.",
+    "dependencies": [
+        "BepInEx-BepInExPack_IL2CPP-6.0.733"
+    ]
+}
