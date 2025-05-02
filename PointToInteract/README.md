@@ -11,4 +11,7 @@ Special thanks to CharlesE2, Nines, Azim, and the modding community for helping 
 [Lost Skies Discord](https://discord.gg/QWtTAnbvqz)  
 [Lost Skies Modding Server](https://discord.gg/zVXAPcHqDV)  
 
+[Thunderstore](https://thunderstore.io/c/lost-skies/p/kruft/Point_To_Interact/)  
+[Github](https://github.com/kruftt/LostSkiesMods/tree/main/PointToInteract)  
+
 `Discord` Kruft#6332  

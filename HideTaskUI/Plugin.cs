@@ -19,12 +19,8 @@ namespace HideTaskUI
         static bool Prefix(Wildskies.UI.Hud.ActiveTaskHud __instance)
         {
             __instance.ClearActiveTask();
+            // __instance.Hide();
             return false;
         }
-
-        //static void Postfix(Wildskies.UI.Hud.ActiveTaskHud __instance)
-        //{
-        //    __instance.Hide();
-        //}
     }
 }
