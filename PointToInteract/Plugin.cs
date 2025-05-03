@@ -8,20 +8,23 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace PointToInteract
 {
-    [BepInPlugin("org.kruft.plugins.PointToInteract", "Point To Interact", "0.2.1")]
-    public class PointToInteractPlugin : BasePlugin
+    [BepInPlugin("org.kruft.plugins.PointToInteract", "Point To Interact", "0.2.2")]
+    public class PointToInteract_Plugin : BasePlugin
     {
-        private static CameraManager _cameraManager;
-        private static int[] _colliderIDs = new int[10];
-
         public override void Load()
         {
-            new Harmony("kruft.PointToInteract").PatchAll(typeof(PointToInteractPlugin));
+            new Harmony("kruft.PointToInteract").PatchAll(typeof(PointToInteract_Patch));
         }
+    }
+
+    public class PointToInteract_Patch
+    {
+        public static CameraManager _cameraManager;
+        private static int[] _colliderIDs = new int[10];
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(CharacterInteract), nameof(CharacterInteract.UpdateInteractionDetectionList))]
-        static void InteractionListPrefix(CharacterInteract __instance, ref int resultCount)
+        static void FilterNearbyInteractables(CharacterInteract __instance, ref int resultCount)
         {
             if (resultCount > 1)
             {
@@ -73,14 +76,14 @@ namespace PointToInteract
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(LocalPlayerService), nameof(LocalPlayerService.RegisterLocalPlayer))]
-        static void SetCameraPostfix(LocalPlayerService __instance)
+        static void SetCamera(LocalPlayerService __instance)
         {
             _cameraManager = __instance.LocalPlayer.CameraManager;
         }
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(LocalPlayerService), nameof(LocalPlayerService.UnregisterPlayer))]
-        static void UnsetCameraPostfix(LocalPlayerService __instance)
+        static void UnsetCamera(LocalPlayerService __instance)
         {
             _cameraManager = null;
         }

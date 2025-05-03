@@ -1,5 +1,9 @@
 ### Changelog
 
+##### 0.2.2
+- Added static `_colliderIDs` buffer
+- Discard ray hits as they are found
+
 ##### 0.2.1
 - Skip filtering if the raycast hits nothing
 - Stop filtering when all raycast hits have been found
