@@ -46,7 +46,7 @@ namespace PointToInteract
                         colliderIDs[i] = _occlusionCheckBuffer[i].colliderInstanceID;
                     }
 
-                    for (int i = 0; i < resultCount && hits < ray_hits; i++)
+                    for (int i = 0; i < resultCount && ray_hits > 0; i++)
                     {
                         Collider collider = _interactablesNearby[i];
                         int colliderID = collider.GetInstanceID();
@@ -57,6 +57,10 @@ namespace PointToInteract
                             {
                                 _interactablesNearby[hits] = collider;
                                 hits++;
+                                
+                                colliderIDs[j] = colliderIDs[ray_hits - 1];
+                                ray_hits--;
+                                
                                 break;
                             }
                         }
