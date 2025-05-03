@@ -1,7 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
-using Wildskies.UI.Hud;
 
 namespace HeraldTracker
 {
@@ -10,16 +9,8 @@ namespace HeraldTracker
     {
         public override void Load()
         {
-            new Harmony("kruft.HeraldTracker").PatchAll();
-        }
-    }
-
-    [HarmonyPatch(typeof(HeraldMovementController), "Start")]
-    class HeraldTrackerPatch
-    {
-        static void Postfix(HeraldMovementController __instance)
-        {
-            UnityEngine.Object.FindFirstObjectByType<CompassHud>().OnPingPlaced("HeraldTracker", __instance.gameObject.transform);
+            Harmony harmony = new Harmony("kruft.HeraldTracker");
+            harmony.PatchAll(typeof(HeraldTrackerPatch));
         }
     }
 }

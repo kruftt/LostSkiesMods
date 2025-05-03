@@ -9,18 +9,8 @@ namespace HideTaskUI
     {
         public override void Load()
         {
-            new Harmony("kruft.HideTaskUI").PatchAll();
-        }
-    }
-
-    [HarmonyPatch(typeof(Wildskies.UI.Hud.ActiveTaskHud), "UpdateActiveTask")]
-    class TaskUIPatch
-    {
-        static bool Prefix(Wildskies.UI.Hud.ActiveTaskHud __instance)
-        {
-            __instance.ClearActiveTask();
-            // __instance.Hide();
-            return false;
+            Harmony harmony = new Harmony("kruft.HideTaskUI");
+            harmony.PatchAll(typeof(HideTaskUIPatch));
         }
     }
 }
