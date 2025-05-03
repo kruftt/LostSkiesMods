@@ -1,7 +1,7 @@
 {
     "name": "Point_To_Interact",
-    "version_number": "0.1.2",
-    "website_url": "",
+    "version_number": "0.1.3",
+    "website_url": "https://github.com/kruftt/LostSkiesMods/",
     "description": "Filters interaction options using the cursor.",
     "dependencies": [
         "BepInEx-BepInExPack_IL2CPP-6.0.733"

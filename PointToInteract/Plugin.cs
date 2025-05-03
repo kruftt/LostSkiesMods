@@ -8,7 +8,7 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace PointToInteract
 {
-    [BepInPlugin("org.kruft.plugins.PointToInteract", "Point To Interact", "0.1.2")]
+    [BepInPlugin("org.kruft.plugins.PointToInteract", "Point To Interact", "0.1.3")]
     public class PointToInteractPlugin : BasePlugin
     {
         private static CameraManager _cameraManager;
@@ -22,7 +22,7 @@ namespace PointToInteract
         [HarmonyPatch(typeof(CharacterInteract), nameof(CharacterInteract.UpdateInteractionDetectionList))]
         static void InteractionListPrefix(CharacterInteract __instance, ref int resultCount)
         {
-            if (resultCount > 0)
+            if (resultCount > 1)
             {
                 Transform cameraTransform = _cameraManager.Camera.gameObject.transform;
                 Il2CppStructArray<RaycastHit> _occlusionCheckBuffer = __instance._occlusionCheckBuffer;
@@ -48,7 +48,7 @@ namespace PointToInteract
                     Collider collider = _interactablesNearby[i];
                     int colliderID = collider.GetInstanceID();
                     
-                    for (int j = 0; j < ray_hits; j++ ) {
+                    for (int j = 0; j < ray_hits; j++) {
                         if (colliderIDs[j] == colliderID)
                         {
                             _interactablesNearby[hits] = collider;
@@ -58,7 +58,7 @@ namespace PointToInteract
                     }
                 }
 
-                resultCount = hits;
+                if (hits > 0) resultCount = hits;
             }
         }
 
