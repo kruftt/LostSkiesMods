@@ -19,7 +19,7 @@ namespace PointToInteract
 
     public class PointToInteract_Patch
     {
-        public static CameraManager _cameraManager;
+        private static CameraManager _cameraManager;
         private static int[] _colliderIDs = new int[10];
 
         [HarmonyPrefix]
