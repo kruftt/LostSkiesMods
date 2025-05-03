@@ -8,7 +8,7 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace PointToInteract
 {
-    [BepInPlugin("org.kruft.plugins.PointToInteract", "Point To Interact", "0.1.3")]
+    [BepInPlugin("org.kruft.plugins.PointToInteract", "Point To Interact", "0.2.1")]
     public class PointToInteractPlugin : BasePlugin
     {
         private static CameraManager _cameraManager;
@@ -36,29 +36,34 @@ namespace PointToInteract
                     QueryTriggerInteraction.Collide
                 );
 
-                int hits = 0;
-                int[] colliderIDs = new int[ray_hits];
-
-                for (int i = 0; i < ray_hits; i++)
+                if (ray_hits > 0)
                 {
-                    colliderIDs[i] = _occlusionCheckBuffer[i].colliderInstanceID;
-                }
+                    int hits = 0;
+                    int[] colliderIDs = new int[ray_hits];
 
-                for (int i = 0; i < resultCount; i++) {
-                    Collider collider = _interactablesNearby[i];
-                    int colliderID = collider.GetInstanceID();
-                    
-                    for (int j = 0; j < ray_hits; j++) {
-                        if (colliderIDs[j] == colliderID)
+                    for (int i = 0; i < ray_hits; i++)
+                    {
+                        colliderIDs[i] = _occlusionCheckBuffer[i].colliderInstanceID;
+                    }
+
+                    for (int i = 0; i < resultCount && hits < ray_hits; i++)
+                    {
+                        Collider collider = _interactablesNearby[i];
+                        int colliderID = collider.GetInstanceID();
+
+                        for (int j = 0; j < ray_hits; j++)
                         {
-                            _interactablesNearby[hits] = collider;
-                            hits++;
-                            break;
+                            if (colliderIDs[j] == colliderID)
+                            {
+                                _interactablesNearby[hits] = collider;
+                                hits++;
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (hits > 0) resultCount = hits;
+                    if (hits > 0) resultCount = hits;
+                }
             }
         }
 
