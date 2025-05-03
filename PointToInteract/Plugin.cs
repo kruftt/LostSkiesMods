@@ -12,6 +12,7 @@ namespace PointToInteract
     public class PointToInteractPlugin : BasePlugin
     {
         private static CameraManager _cameraManager;
+        private static int[] _colliderIDs = new int[10];
 
         public override void Load()
         {
@@ -35,15 +36,14 @@ namespace PointToInteract
                     __instance._interactableLayerMask,
                     QueryTriggerInteraction.Collide
                 );
-
+                
                 if (ray_hits > 0)
                 {
                     int hits = 0;
-                    int[] colliderIDs = new int[ray_hits];
 
                     for (int i = 0; i < ray_hits; i++)
                     {
-                        colliderIDs[i] = _occlusionCheckBuffer[i].colliderInstanceID;
+                        _colliderIDs[i] = _occlusionCheckBuffer[i].colliderInstanceID;
                     }
 
                     for (int i = 0; i < resultCount && ray_hits > 0; i++)
@@ -53,12 +53,12 @@ namespace PointToInteract
 
                         for (int j = 0; j < ray_hits; j++)
                         {
-                            if (colliderIDs[j] == colliderID)
+                            if (_colliderIDs[j] == colliderID)
                             {
                                 _interactablesNearby[hits] = collider;
                                 hits++;
                                 
-                                colliderIDs[j] = colliderIDs[ray_hits - 1];
+                                _colliderIDs[j] = _colliderIDs[ray_hits - 1];
                                 ray_hits--;
                                 
                                 break;
