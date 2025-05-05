@@ -1,0 +1,9 @@
+{
+    "name": "ShipCam_Pro",
+    "version_number": "0.1.0",
+    "website_url": "https://github.com/kruftt/LostSkiesMods/",
+    "description": "Remembers 3rd person camera setting and adjusts freelook rotation.",
+    "dependencies": [
+        "BepInEx-BepInExPack_IL2CPP-6.0.733"
+    ]
+}
