@@ -4,7 +4,7 @@ using UnityEngine;
 using WildSkies.Input;
 using WildSkies.Player;
 using WildSkies.ShipParts;
-
+using Bossa.Cinematika;
 
 namespace ShipCamPro
 {
@@ -19,7 +19,7 @@ namespace ShipCamPro
         {
             if (_thirdPerson && !_isOnTurret)
             {
-                t.rotation = Quaternion.LookRotation(__instance._manager._target.position - t.position, new Vector3(0f, 1f, 0f));
+                t.rotation = Quaternion.LookRotation(__instance._manager._target.position - t.position, Vector3.up);
             }
         }
 
@@ -28,6 +28,7 @@ namespace ShipCamPro
         static void ResetRemoteAiming(LocalPlayer __instance)
         {
             _isOnTurret = false;
+            
             UserControlShip userControlShip = __instance._userControlShip;
             if (userControlShip._isRemoteAiming)
             {
@@ -43,12 +44,12 @@ namespace ShipCamPro
             _isOnTurret = true;
         }
 
-
         [HarmonyPostfix]
         [HarmonyPatch(typeof(LocalPlayer), nameof(LocalPlayer.TakeControlOfShip))]
         static void SetCameraState(LocalPlayer __instance, Helm helm)
         {
             _isOnTurret = false;
+
             if (_thirdPerson)
             {
                 __instance._cameraManager.GetController<PilotCinematikaController>().ThirdPerson = true;
