@@ -8,6 +8,7 @@ A repo for my [Lost Skies Plugins](https://thunderstore.io/c/lost-skies/p/kruft/
 - [Hide Task UI](HideTaskUI)  
 - [No Deathbag](NoDeathbag)  
 - [Point To Interact](PointToInteract)  
+- [ShipCam Pro](ShipCamPro)
 
 ---
 
