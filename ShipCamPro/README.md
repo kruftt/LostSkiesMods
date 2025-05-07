@@ -1,6 +1,6 @@
 # ShipCam Pro
 
-Remembers 3rd person camera setting and adjusts the 3rd person freelook rotation so as to remain facing up.
+Remembers if in 3rd person, straightens camera orientation, and allows the camera to stay in place.
 
 [Lost Skies Discord](https://discord.gg/QWtTAnbvqz)  
 [Lost Skies Modding Server](https://discord.gg/zVXAPcHqDV)  
