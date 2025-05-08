@@ -19,13 +19,16 @@ namespace HeraldTracker.Patches
                 return;
             }
 
-            if (_compassHud == null)
+            if (icon == null)
             {
-                HeraldTrackerPlugin.log.LogWarning("Notify: CompassHud not found.");
-                return;
+                if (_compassHud == null)
+                {
+                    HeraldTrackerPlugin.log.LogWarning("Notify: CompassHud not found.");
+                    return;
+                }
+                icon = _compassHud._compassIconPrefab._pingIcon;
             }
 
-            icon = icon ?? _compassHud._compassIconPrefab._pingIcon;
             notificationHud.Show(new NotificationHudPayload(icon, new LocalizedString("General", "ok.label")).Cast<IPayload>());
             notificationHud._currentNotification._message.text = message;
         }
