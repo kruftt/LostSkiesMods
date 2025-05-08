@@ -1,15 +1,15 @@
 ﻿using HarmonyLib;
-using Wildskies.UI.Hud;
 
-namespace HeraldTracker
+namespace HeraldTracker.Patches
 {
-    class HeraldTrackerPatch
+    class HeraldTracker
     {
         [HarmonyPostfix]
         [HarmonyPatch(typeof(HeraldMovementController), "Start")]
         static void AddHeraldToCompass(HeraldMovementController __instance)
         {
-            UnityEngine.Object.FindFirstObjectByType<CompassHud>().OnPingPlaced("HeraldTracker", __instance.gameObject.transform);
+            Tracker.Track("HeraldTracker", __instance.gameObject.transform);
+            HeraldTrackerPlugin.log.LogInfo("Added Herald to compass.");
         }
     }
 }

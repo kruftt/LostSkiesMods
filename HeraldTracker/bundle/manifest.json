@@ -1,8 +1,8 @@
 {
   "name": "Herald_Tracker",
-  "version_number": "0.1.0",
+  "version_number": "0.2.0",
   "website_url": "https://github.com/kruftt/LostSkiesMods/",
-  "description": "Adds a compass icon guiding you to the Herald.",
+  "description": "Now with whale tracking!",
   "dependencies": [
     "BepInEx-BepInExPack_IL2CPP-6.0.733"
   ]
