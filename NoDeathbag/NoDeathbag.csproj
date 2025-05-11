@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+		<Author>kruft</Author>
+		<Product>No Deathbag</Product>
+		<Version>0.1.0</Version>
+		<Description>Prevents your character from dropping a deathbag.</Description>
+		<ModDependencies>
+			BepInEx-BepInExPack_IL2CPP-6.0.733;
+		</ModDependencies>
+	</PropertyGroup>
+
+	<ItemGroup>
+    <Reference Include="Dynamika.Runtime">
+      <HintPath>$(BepInExDir)interop\Dynamika.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+	<Import Project="..\LostSkies.targets"/>
+</Project>

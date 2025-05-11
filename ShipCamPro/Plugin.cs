@@ -4,12 +4,12 @@ using HarmonyLib;
 
 namespace ShipCamPro
 {
-    [BepInPlugin("org.kruft.plugins.ShipCamPro", "Ship Cam Pro", "0.2.0")]
+    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
     public class ShipCamProPlugin : BasePlugin
     {
         public override void Load()
         {
-            Harmony harmony = new Harmony("kruft.ShipCamPro");
+            Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(ShipCamProPatch));
         }
     }

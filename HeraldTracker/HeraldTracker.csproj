@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Author>kruft</Author>
+		<Product>Herald Tracker</Product>
+		<Version>0.2.0</Version>
+		<Description>Now with whale tracking!</Description>
+		<ModDependencies>
+			BepInEx-BepInExPack_IL2CPP-6.0.733;
+		</ModDependencies>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="UISystem">
+			<HintPath>$(BepInExDir)interop\UISystem.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UISystem.Local">
+			<HintPath>$(BepInExDir)interop\UISystem.Local.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Unity.Localization">
+			<HintPath>$(BepInExDir)interop\Unity.Localization.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>$(BepInExDir)interop\Unity.TextMeshPro.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.LocalizationModule">
+			<HintPath>$(BepInExDir)interop\UnityEngine.LocalizationModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(BepInExDir)interop\UnityEngine.UI.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.UIElementsModule">
+			<HintPath>$(BepInExDir)interop\UnityEngine.UIElementsModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+	<Import Project="..\LostSkies.targets"/>
+</Project>

@@ -1,9 +1,0 @@
-{
-    "name": "ShipCam_Pro",
-    "version_number": "0.2.0",
-    "website_url": "https://github.com/kruftt/LostSkiesMods/",
-    "description": "Remembers if in 3rd person, straightens camera orientation, and allows the camera to stay in place.",
-    "dependencies": [
-        "BepInEx-BepInExPack_IL2CPP-6.0.733"
-    ]
-}

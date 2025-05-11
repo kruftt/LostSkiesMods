@@ -4,12 +4,12 @@ using HarmonyLib;
 
 namespace PointToInteract
 {
-    [BepInPlugin("org.kruft.plugins.PointToInteract", "Point To Interact", "0.2.2")]
+    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
     public class PointToInteractPlugin : BasePlugin
     {
         public override void Load()
         {
-            Harmony harmony = new Harmony("kruft.PointToInteract");
+            Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(PointToInteractPatch));
         }
     }

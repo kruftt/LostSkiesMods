@@ -1,13 +1,14 @@
 ﻿using Bossa.Cinematika.Modules;
 using HarmonyLib;
+using WildSkies.Player;
 
 namespace NoDeathbag
 {
     public class NoDeathbagPatch
     {
         [HarmonyPrefix]
-        [HarmonyPatch(typeof(WildSkies.Player.LocalPlayer), "OnEntityDeath")]
-        static bool OnEntityDeath_SkipDeathbag(WildSkies.Player.LocalPlayer __instance)
+        [HarmonyPatch(typeof(LocalPlayer), nameof(LocalPlayer.OnEntityDeath))]
+        private static bool OnEntityDeath_SkipDeathbag(LocalPlayer __instance)
         {
             __instance._cameraManager.GetModule<CameraVisualSettings>().AddVisualAction(new BloomFlash(1f, 4f));
             __instance._cameraManager.GetModule<CameraVisualSettings>().AddVisualAction(__instance._deathCameraEffect);

@@ -1,15 +1,15 @@
 ﻿using HarmonyLib;
+using UnityEngine;
 using UnityEngine.Localization;
 using Wildskies.UI.Hud;
-using UnityEngine;
 
 namespace HeraldTracker.Patches
 {
     public class Tracker
     {
-        public static CompassHud _compassHud;
+        private static CompassHud _compassHud;
 
-        static public void Notify(string message, Sprite icon = null)
+        public static void Notify(string message, Sprite icon = null)
         {
             NotificationHud notificationHud = UnityEngine.Object.FindFirstObjectByType<NotificationHud>();
 
@@ -33,7 +33,7 @@ namespace HeraldTracker.Patches
             notificationHud._currentNotification._message.text = message;
         }
 
-        static public void Track(string name, Transform target)
+        public static void Track(string name, Transform target)
         {
             if (_compassHud == null)
             {
@@ -43,7 +43,7 @@ namespace HeraldTracker.Patches
             _compassHud.OnPingPlaced(name, target);
         }
 
-        static public void Untrack(Transform target)
+        public static void Untrack(Transform target)
         {
             if (_compassHud == null)
             {
@@ -55,14 +55,14 @@ namespace HeraldTracker.Patches
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(CompassHud), nameof(CompassHud.Start))]
-        static void CacheCompassHud(CompassHud __instance)
+        private static void CacheCompassHud(CompassHud __instance)
         {
             _compassHud = __instance;
         }
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(CompassHud), nameof(CompassHud.OnDestroy))]
-        static void ClearCompassHud(CompassHud __instance)
+        private static void ClearCompassHud(CompassHud __instance)
         {
             _compassHud = null;
         }

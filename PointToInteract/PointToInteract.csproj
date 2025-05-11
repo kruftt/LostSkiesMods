@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+		<Author>kruft</Author>
+		<Product>Point To Interact</Product>
+		<Version>0.2.2</Version>
+		<Description>Filters interaction options using the cursor.</Description>
+		<ModDependencies>
+			BepInEx-BepInExPack_IL2CPP-6.0.733;
+		</ModDependencies>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Dynamika.Runtime">
+      <HintPath>$(BepInExDir)interop\Dynamika.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SharedAssets.Code">
+      <HintPath>$(BepInExDir)interop\SharedAssets.Code.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UISystem">
+      <HintPath>$(BepInExDir)interop\UISystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(BepInExDir)interop\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Import Project="..\LostSkies.targets"/>
+</Project>

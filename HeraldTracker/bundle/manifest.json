@@ -1,9 +1,0 @@
-{
-  "name": "Herald_Tracker",
-  "version_number": "0.2.0",
-  "website_url": "https://github.com/kruftt/LostSkiesMods/",
-  "description": "Now with whale tracking!",
-  "dependencies": [
-    "BepInEx-BepInExPack_IL2CPP-6.0.733"
-  ]
-}

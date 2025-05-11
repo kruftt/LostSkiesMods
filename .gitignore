@@ -6,8 +6,11 @@ Libs/
 media/
 oldLibs/
 plugins.sln
-*.csproj
-bundle.bat
+*.csproj.user
 EnableQuantumConsole/
 PrintCommandList/
 snippets
+packages/
+*.dll
+manifest.json
+plugins/

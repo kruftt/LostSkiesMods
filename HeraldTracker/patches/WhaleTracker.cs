@@ -7,7 +7,7 @@ namespace HeraldTracker.Patches
     {
         [HarmonyPostfix]
         [HarmonyPatch(typeof(SkyWhaleCritter), nameof(SkyWhaleCritter.Init))]
-        static void AddWhaleToCompass(SkyWhaleCritter __instance)
+        private static void AddWhaleToCompass(SkyWhaleCritter __instance)
         {
             Tracker.Track(__instance.name, __instance.transform);
             Tracker.Notify("A whale has been spotted!");
@@ -16,7 +16,7 @@ namespace HeraldTracker.Patches
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(SkyWhaleCritter), nameof(SkyWhaleCritter.OnDisable))]
-        static void RemoveWhaleFromCompass(SkyWhaleCritter __instance)
+        private static void RemoveWhaleFromCompass(SkyWhaleCritter __instance)
         {
             Tracker.Untrack(__instance.transform);
             Tracker.Notify("The whale slips into the clouds...");

@@ -4,12 +4,12 @@ using HarmonyLib;
 
 namespace NoDeathbag
 {
-    [BepInPlugin("org.kruft.plugins.NoDeathbag", "No Deathbag", "0.1.1")]
+    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
     public class NoDeathbagPlugin : BasePlugin
     {
         public override void Load()
         {
-            Harmony harmony = new Harmony("kruft.NoDeathbag");
+            Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(NoDeathbagPatch));
         }
     }

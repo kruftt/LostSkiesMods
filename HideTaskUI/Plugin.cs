@@ -4,12 +4,12 @@ using HarmonyLib;
 
 namespace HideTaskUI
 {
-    [BepInPlugin("org.kruft.plugins.HideTaskUI", "Hide Task UI", "0.1.0")]
+    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
     public class HideTaskUIPlugin : BasePlugin
     {
         public override void Load()
         {
-            Harmony harmony = new Harmony("kruft.HideTaskUI");
+            Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(HideTaskUIPatch));
         }
     }

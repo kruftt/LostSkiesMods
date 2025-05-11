@@ -6,14 +6,14 @@ using WildSkies.Service;
 
 namespace PointToInteract
 {
-    public class PointToInteractPatch
+    class PointToInteractPatch
     {
         private static CameraManager _cameraManager;
         private static int[] _colliderIDs = new int[10];
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(CharacterInteract), nameof(CharacterInteract.UpdateInteractionDetectionList))]
-        static void FilterNearbyInteractables(CharacterInteract __instance, ref int resultCount)
+        private static void FilterNearbyInteractables(CharacterInteract __instance, ref int resultCount)
         {
             if (resultCount > 1)
             {
@@ -49,10 +49,10 @@ namespace PointToInteract
                             {
                                 _interactablesNearby[hits] = collider;
                                 hits++;
-
-                                _colliderIDs[j] = _colliderIDs[ray_hits - 1];
+                                
                                 ray_hits--;
-
+                                _colliderIDs[j] = _colliderIDs[ray_hits];
+                                
                                 break;
                             }
                         }
@@ -65,14 +65,14 @@ namespace PointToInteract
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(LocalPlayerService), nameof(LocalPlayerService.RegisterLocalPlayer))]
-        static void SetCamera(LocalPlayerService __instance)
+        private static void SetCamera(LocalPlayerService __instance)
         {
             _cameraManager = __instance.LocalPlayer.CameraManager;
         }
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(LocalPlayerService), nameof(LocalPlayerService.UnregisterPlayer))]
-        static void UnsetCamera(LocalPlayerService __instance)
+        private static void UnsetCamera(LocalPlayerService __instance)
         {
             _cameraManager = null;
         }
