@@ -3,7 +3,7 @@ using HarmonyLib;
 using WildSkies.Player;
 namespace NoDeathbag;
 
-public class NoDeathbagPatch
+class NoDeathbagPatch
 {
     [HarmonyPrefix]
     [HarmonyPatch(typeof(LocalPlayer), nameof(LocalPlayer.OnEntityDeath))]
