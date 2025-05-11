@@ -2,15 +2,14 @@
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 
-namespace HideTaskUI
+namespace HideTaskUI;
+
+[BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
+public class HideTaskUIPlugin : BasePlugin
 {
-    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-    public class HideTaskUIPlugin : BasePlugin
+    public override void Load()
     {
-        public override void Load()
-        {
-            Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
-            harmony.PatchAll(typeof(HideTaskUIPatch));
-        }
+        Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+        harmony.PatchAll(typeof(HideTaskUIPatch));
     }
 }

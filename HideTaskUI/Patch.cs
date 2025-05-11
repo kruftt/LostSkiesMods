@@ -1,17 +1,16 @@
 ﻿using HarmonyLib;
 using Wildskies.UI.Hud;
 
-namespace HideTaskUI
+namespace HideTaskUI;
+
+class HideTaskUIPatch
 {
-    class HideTaskUIPatch
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(ActiveTaskHud), nameof(ActiveTaskHud.UpdateActiveTask))]
+    private static bool ClearTasksAndDontUpdate(ActiveTaskHud __instance)
     {
-        [HarmonyPrefix]
-        [HarmonyPatch(typeof(ActiveTaskHud), nameof(ActiveTaskHud.UpdateActiveTask))]
-        private static bool ClearTasksAndDontUpdate(ActiveTaskHud __instance)
-        {
-            __instance.ClearActiveTask();
-            // __instance.Hide();
-            return false;
-        }
+        __instance.ClearActiveTask();
+        // __instance.Hide();
+        return false;
     }
 }
