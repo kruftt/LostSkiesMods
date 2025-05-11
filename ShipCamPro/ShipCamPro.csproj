@@ -1,24 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<Author>kruft</Author>
-		<Product>Ship Cam Pro</Product>
+		<Product>ShipCam Pro</Product>
 		<Version>0.2.0</Version>
 		<Description>Stores 3rd person toggle, straightens camera orientation, and keeps the camera in place.</Description>
 		<ModDependencies>
 			BepInEx-BepInExPack_IL2CPP-6.0.733;
 		</ModDependencies>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<Reference Include="Dynamika.Runtime">
-			<HintPath>$(BepInExDir)interop\Dynamika.Runtime.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="Unity.InputSystem">
-			<HintPath>$(BepInExDir)interop\Unity.InputSystem.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-	</ItemGroup>
-
+	
 	<Import Project="..\LostSkies.targets"/>
 </Project>

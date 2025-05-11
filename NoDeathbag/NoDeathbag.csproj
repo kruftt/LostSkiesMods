@@ -9,12 +9,5 @@
 		</ModDependencies>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<Reference Include="Dynamika.Runtime">
-			<HintPath>$(BepInExDir)interop\Dynamika.Runtime.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-	</ItemGroup>
-
 	<Import Project="..\LostSkies.targets"/>
 </Project>

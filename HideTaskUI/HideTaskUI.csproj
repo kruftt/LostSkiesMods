@@ -9,12 +9,5 @@
 		</ModDependencies>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<Reference Include="UISystem">
-			<HintPath>$(BepInExDir)interop\UISystem.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-	</ItemGroup>
-
 	<Import Project="..\LostSkies.targets"/>
 </Project>

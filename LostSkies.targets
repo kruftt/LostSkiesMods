@@ -6,6 +6,27 @@
 		<PackageProjectUrl>https://github.com/kruftt/LostSkiesMods/tree/main/</PackageProjectUrl>
 	</PropertyGroup>
 
+	<Target Name="PrepareMod" AfterTargets="PostBuildEvent">
+		<Copy
+			SourceFiles="$(TargetDir)$(AssemblyName).dll"
+			DestinationFolder="$(BepInExDir)plugins\"
+			SkipUnchangedFiles="true"
+		/>
+		<Copy
+			SourceFiles="$(TargetDir)$(AssemblyName).dll"
+			DestinationFolder="$(BundleDir)plugins\"
+			SkipUnchangedFiles="true"
+		/>
+		<MakeManifest
+			TargetDir="$(BundleDir)"
+			Product="$(Product.Replace(' ', '_'))"
+			Version="$(Version)"
+			Description="$(Description)"
+			WebsiteUrl="$(PackageProjectUrl)$(MSBuildProjectName)"
+			Dependencies="@(ModDeps)"
+		/>
+	</Target>
+
 	<PropertyGroup>
 		<PackageId>$(AssemblyName)</PackageId>
 		<TargetFramework>net6.0</TargetFramework>
@@ -21,35 +42,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ModDeps Include="$(ModDependencies)" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
 		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Reference Include="Code">
-			<HintPath>$(BepInExDir)interop\Code.dll</HintPath>
+		<Reference Include="$(BepInExDir)interop\*.dll">
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="SharedAssets.Code">
-			<HintPath>$(BepInExDir)interop\SharedAssets.Code.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="Il2Cppmscorlib">
-			<HintPath>$(BepInExDir)interop\Il2Cppmscorlib.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="UnityEngine">
-			<HintPath>$(BepInExDir)interop\UnityEngine.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>$(BepInExDir)interop\UnityEngine.CoreModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
+		<ModDeps Include="$(ModDependencies)" />
 	</ItemGroup>
 
 	<UsingTask
@@ -94,25 +92,4 @@ File.WriteAllText(
 			</Code>
 		</Task>
 	</UsingTask>
-
-	<Target Name="StageMod" AfterTargets="PostBuildEvent">
-		<Copy
-			SourceFiles="$(TargetDir)$(AssemblyName).dll"
-			DestinationFolder="$(BepInExDir)plugins\"
-			SkipUnchangedFiles="true"
-		/>
-		<Move
-			SourceFiles="$(TargetDir)$(AssemblyName).dll"
-			DestinationFolder="$(BundleDir)plugins\"
-		/>
-		<MakeManifest
-			TargetDir="$(BundleDir)"
-			Product="$(Product.Replace(' ', '_'))"
-			Version="$(Version)"
-			Description="$(Description)"
-			WebsiteUrl="$(PackageProjectUrl)$(MSBuildProjectName)"
-			Dependencies="@(ModDeps)"
-		/>
-		<RemoveDir Directories=".\bin\" />
-	</Target>
 </Project>
