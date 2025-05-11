@@ -2,7 +2,8 @@
 using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
-using WildSkies.Service;namespace PointToInteract;
+using WildSkies.Service;
+namespace PointToInteract;
 
 class PointToInteractPatch
 {
