@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
+	<PropertyGroup>
 		<Author>kruft</Author>
 		<Product>Hide Task UI</Product>
 		<Version>0.1.0</Version>
@@ -9,12 +9,12 @@
 		</ModDependencies>
 	</PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="UISystem">
-      <HintPath>$(BepInExDir)interop\UISystem.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
-	
+	<ItemGroup>
+		<Reference Include="UISystem">
+			<HintPath>$(BepInExDir)interop\UISystem.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
 	<Import Project="..\LostSkies.targets"/>
 </Project>

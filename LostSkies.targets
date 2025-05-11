@@ -4,7 +4,7 @@
 		<BepInExDir>C:\Program Files (x86)\Steam\steamapps\common\Wild Skies\BepInEx\</BepInExDir>
 		<BundleDir>.\bundle\</BundleDir>
 	</PropertyGroup>
-	
+
 	<PropertyGroup>
 		<PackageProjectUrl>https://github.com/kruftt/LostSkiesMods/tree/main/</PackageProjectUrl>
 		<PackageId>$(AssemblyName)</PackageId>
@@ -17,7 +17,7 @@
 			https://api.nuget.org/v3/index.json;
 			https://nuget.bepinex.dev/v3/index.json;
 			https://nuget.samboy.dev/v3/index.json
-		</RestoreAdditionalProjectSources>	
+		</RestoreAdditionalProjectSources>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -51,7 +51,7 @@
 			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
-	
+
 	<UsingTask
 		TaskName="MakeManifest"
 		TaskFactory="CodeTaskFactory"

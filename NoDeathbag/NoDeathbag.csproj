@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
+	<PropertyGroup>
 		<Author>kruft</Author>
 		<Product>No Deathbag</Product>
 		<Version>0.1.0</Version>
@@ -10,11 +10,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-    <Reference Include="Dynamika.Runtime">
-      <HintPath>$(BepInExDir)interop\Dynamika.Runtime.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+		<Reference Include="Dynamika.Runtime">
+			<HintPath>$(BepInExDir)interop\Dynamika.Runtime.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
 	<Import Project="..\LostSkies.targets"/>
 </Project>
