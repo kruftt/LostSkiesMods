@@ -107,7 +107,7 @@ File.WriteAllText(
 		/>
 		<MakeManifest
 			TargetDir="$(BundleDir)"
-			Product="$(Product)"
+			Product="$(Product.Replace(' ', '_'))"
 			Version="$(Version)"
 			Description="$(Description)"
 			WebsiteUrl="$(PackageProjectUrl)$(MSBuildProjectName)"
