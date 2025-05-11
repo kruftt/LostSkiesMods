@@ -14,10 +14,6 @@
 			<HintPath>$(BepInExDir)interop\Dynamika.Runtime.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="SharedAssets.Code">
-			<HintPath>$(BepInExDir)interop\SharedAssets.Code.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
 		<Reference Include="UISystem">
 			<HintPath>$(BepInExDir)interop\UISystem.dll</HintPath>
 			<Private>false</Private>
