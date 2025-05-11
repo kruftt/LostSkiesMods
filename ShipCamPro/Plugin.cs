@@ -1,7 +1,6 @@
-﻿using BepInEx.Unity.IL2CPP;
-using BepInEx;
+﻿using BepInEx;
+using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
-
 namespace ShipCamPro;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]

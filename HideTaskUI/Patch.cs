@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using Wildskies.UI.Hud;
-
 namespace HideTaskUI;
 
 class HideTaskUIPatch

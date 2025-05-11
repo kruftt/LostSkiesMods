@@ -1,11 +1,10 @@
-﻿using HarmonyLib;
-using Bossa.Cinematika;
+﻿using Bossa.Cinematika;
 using Bossa.Cinematika.Controllers;
+using HarmonyLib;
 using UnityEngine;
 using WildSkies.Input;
 using WildSkies.Player;
 using WildSkies.ShipParts;
-
 namespace ShipCamPro;
 
 class ShipCamProPatch

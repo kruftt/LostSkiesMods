@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using WildSkies.AI;
-
 namespace HeraldTracker.Patches;
 
 class WhaleTracker

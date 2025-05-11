@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.Localization;
 using Wildskies.UI.Hud;
-
 namespace HeraldTracker.Patches;
 
 public class Tracker

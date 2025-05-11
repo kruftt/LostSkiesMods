@@ -2,9 +2,7 @@
 using HarmonyLib;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
-using WildSkies.Service;
-
-namespace PointToInteract;
+using WildSkies.Service;namespace PointToInteract;
 
 class PointToInteractPatch
 {
@@ -49,10 +47,10 @@ class PointToInteractPatch
                         {
                             _interactablesNearby[hits] = collider;
                             hits++;
-                            
+
                             ray_hits--;
                             _colliderIDs[j] = _colliderIDs[ray_hits];
-                            
+
                             break;
                         }
                     }

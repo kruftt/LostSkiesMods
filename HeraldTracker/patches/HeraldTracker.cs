@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-
 namespace HeraldTracker.Patches;
 
 class HeraldTracker
