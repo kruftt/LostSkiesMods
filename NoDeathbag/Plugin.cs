@@ -1,7 +1,4 @@
-﻿using BepInEx;
-using BepInEx.Unity.IL2CPP;
-using HarmonyLib;
-namespace NoDeathbag;
+﻿namespace NoDeathbag;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class NoDeathbagPlugin : BasePlugin

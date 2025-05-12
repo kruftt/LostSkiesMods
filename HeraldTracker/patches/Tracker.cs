@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Localization;
 using Wildskies.UI.Hud;
 namespace HeraldTracker.Patches;

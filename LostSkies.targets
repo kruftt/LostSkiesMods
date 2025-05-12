@@ -44,9 +44,13 @@
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
 		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-		<Reference Include="$(BepInExDir)interop\*.dll">
+		<Reference Include="$(BepInExDir)interop\*publicized.dll">
 			<Private>false</Private>
 		</Reference>
+		<Using Include="HarmonyLib" />
+		<Using Include="BepInEx" />
+		<Using Include="BepInEx.Logging" />
+		<Using Include="BepInEx.Unity.IL2CPP" />
 		<ModDeps Include="$(ModDependencies)" />
 	</ItemGroup>
 
