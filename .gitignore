@@ -8,10 +8,11 @@ oldLibs/
 plugins.sln
 *.csproj.user
 EnableQuantumConsole/
+FreeCamPro/
 PrintCommandList/
+ShitChat/
 snippets
 packages/
 *.dll
 manifest.json
 plugins/
-ShitChat/
