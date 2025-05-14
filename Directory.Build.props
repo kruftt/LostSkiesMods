@@ -1,5 +1,6 @@
 ﻿<Project>
 	<PropertyGroup>
+		<PackageId>LostSkies.$(MSBuildProjectName)</PackageId>
 		<TargetFramework>net6.0</TargetFramework>
 		<BaseOutputPath>$(TargetDir)</BaseOutputPath>
 		<LangVersion>latest</LangVersion>
