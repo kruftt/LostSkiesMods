@@ -1,6 +1,6 @@
 # No Deathbag
 
-Prevents your character from dropping a deathbag.
+Prevents your character from dropping your inventory when you die. You keep your inventory! (apologies for the previous ambiguity)
 
 [Lost Skies Discord](https://discord.gg/QWtTAnbvqz)  
 [Lost Skies Modding Server](https://discord.gg/zVXAPcHqDV)  

@@ -8,6 +8,4 @@
 			BepInEx-BepInExPack_IL2CPP-6.0.733;
 		</ModDependencies>
 	</PropertyGroup>
-	
-	<Import Project="..\LostSkies.targets"/>
 </Project>
