@@ -1,11 +1,4 @@
 ﻿<Project>
-	<PropertyGroup>
-		<AssemblyName>$(author).$(Product.Replace(" ", ""))</AssemblyName>
-		<BepInExDir>C:\Program Files (x86)\Steam\steamapps\common\Wild Skies\BepInEx\</BepInExDir>
-		<BundleDir>.\bundle\</BundleDir>
-		<PackageProjectUrl>https://github.com/kruftt/LostSkiesMods/tree/main/</PackageProjectUrl>
-	</PropertyGroup>
-
 	<Target Name="PrepareMod" AfterTargets="PostBuildEvent">
 		<Copy
 			SourceFiles="$(TargetDir)$(AssemblyName).dll"
@@ -26,34 +19,6 @@
 			Dependencies="@(ModDeps)"
 		/>
 	</Target>
-
-	<PropertyGroup>
-		<PackageId>$(AssemblyName)</PackageId>
-		<TargetFramework>net6.0</TargetFramework>
-		<BaseOutputPath>$(TargetDir)</BaseOutputPath>
-		<LangVersion>latest</LangVersion>
-		<Nullable>disable</Nullable>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<RestoreAdditionalProjectSources>
-			https://api.nuget.org/v3/index.json;
-			https://nuget.bepinex.dev/v3/index.json;
-			https://nuget.samboy.dev/v3/index.json
-		</RestoreAdditionalProjectSources>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
-		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-		<Reference Include="$(BepInExDir)interop\*.dll">
-			<Private>false</Private>
-		</Reference>
-		<Using Include="HarmonyLib" />
-		<Using Include="BepInEx" />
-		<Using Include="BepInEx.Logging" />
-		<Using Include="BepInEx.Unity.IL2CPP" />
-		<ModDeps Include="$(ModDependencies)" />
-	</ItemGroup>
-
 	<UsingTask
 		TaskName="MakeManifest"
 		TaskFactory="CodeTaskFactory"
