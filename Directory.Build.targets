@@ -1,64 +1,70 @@
-﻿<Project>
-	<Target Name="PrepareMod" AfterTargets="PostBuildEvent">
+<Project>	
+	<Target Name="StageMod" AfterTargets="PostBuildEvent">
 		<Copy
 			SourceFiles="$(TargetDir)$(AssemblyName).dll"
 			DestinationFolder="$(BepInExDir)plugins\"
 			SkipUnchangedFiles="true"
 		/>
+	</Target>
+
+	<Target Name="PrepPublish" AfterTargets="PostBuildEvent">
+		<PropertyGroup>
+			<PublishProfileDir>$(ProjectDir)Properties\PublishProfiles\</PublishProfileDir>
+		</PropertyGroup>
+		<MakeDir Directories="$(PublishProfileDir)"></MakeDir>
 		<Copy
-			SourceFiles="$(TargetDir)$(AssemblyName).dll"
-			DestinationFolder="$(BundleDir)plugins\"
-			SkipUnchangedFiles="true"
-		/>
-		<MakeManifest
-			TargetDir="$(BundleDir)"
-			Product="$(Product.Replace(' ', '_'))"
-			Version="$(Version)"
-			Description="$(Description)"
-			WebsiteUrl="$(PackageProjectUrl)$(MSBuildProjectName)"
-			Dependencies="@(ModDeps)"
+			SourceFiles="$(SolutionDir)FolderProfile.pubxml"
+			DestinationFolder="$(PublishProfileDir)"
 		/>
 	</Target>
-	<UsingTask
-		TaskName="MakeManifest"
-		TaskFactory="CodeTaskFactory"
-		AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll"
-	>
-		<ParameterGroup>
-			<TargetDir ParameterType="System.String" Required="true"></TargetDir>
-			<Product ParameterType="System.String" Required="true"></Product>
-			<Version ParameterType="System.String" Required="true"></Version>
-			<Description ParameterType="System.String" Required="true"></Description>
-			<WebsiteUrl ParameterType="System.String" Required="true"></WebsiteUrl>
-			<Dependencies ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true"></Dependencies>
-		</ParameterGroup>
-		<Task>
-			<Reference Include="System.Text.Json" Version="8.0.5" />
-			<Reference Include="Microsoft.Bcl.AsyncInterfaces" />
-			<Using Namespace="System.IO" />
-			<Using Namespace="System.Text.Json" />
-			<Using Namespace="System.Linq" />
-			<Code Type="Fragment" Language="cs">
-				<![CDATA[
-var manifestData = new {
-	name = Product,
-	version_number = Version,
-	description = Description,
-	website_url = WebsiteUrl,
-	dependencies = Dependencies.Select(d => d.ItemSpec).ToArray()
-};
-	
-Directory.CreateDirectory(TargetDir);
-	
-File.WriteAllText(
-	TargetDir + "manifest.json",
-	JsonSerializer.Serialize(
-		manifestData,
-		new JsonSerializerOptions { WriteIndented = true }
-	)
-);
-				]]>
-			</Code>
-		</Task>
-	</UsingTask>
+
+	<Target Name="MSBuildDeployMod" AfterTargets="PublishOnly" DependsOnTargets="DeployMod" />
+	<Target Name="DotnetDeployMod" AfterTargets="Publish" DependsOnTargets="DeployMod" />
+	<Target Name="DeployMod">
+		<PropertyGroup>
+			<_Name>$(Name.Replace(" ", "_"))</_Name>
+		</PropertyGroup>
+		<ItemGroup>
+			<ZipSource Include="README.md" />
+			<CopySource Include="$(BundleDir)" Dest="" />
+		</ItemGroup>
+		<MakeDir Directories="$(BundleDir);$(DistDir)" />
+		<Delete Files="$(BundleDir)$(AssemblyName).deps.json" />
+		<TSAMakeManifest
+			Name="$(_Name)"
+			Description="$(Description)"
+			VersionNumber="$(Version)"
+			Dependencies="@(ModReference)"
+			WebsiteUrl="$(RepositoryUrl)"
+			DestinationDirectory="$(BundleDir)"
+		/>
+		<TSAMakeZip
+			SourceDirectory="$(BundleDir)"
+			DestinationFile="$(DistDir)$(AssemblyName)-$(Version).zip"
+			SourceFiles="@(ZipSource)"
+		/>
+		<TSAMakeToml
+			Namespace="$(Authors)"
+			Name="$(_Name)"
+			Description="$(Description)"
+			Version="$(Version)"
+			WebsiteUrl="$(RepositoryUrl)"
+			Dependencies="@(ModReference)"
+			Icon="$(BundleDir)icon.png"
+			OutDir="$(DistDir)"
+			BuildCopy="@(CopySource)"
+			Repository="https://thunderstore.dev"
+			Community="lost-skies"
+			Categories="@(ModCategories)"
+		/>
+	</Target>
+
+	<Target Name="CleanMod" AfterTargets="Clean">
+		<Delete Files="$(BundleDir)$(AssemblyName).dll;$(BundleDir)manifest.json" />
+		<RemoveDir Directories="$(DistDir);$(ProjectDir)Properties;$(ProjectDir)bin" />
+	</Target>
+
+	<UsingTask TaskName="TSAMakeManifest" AssemblyFile="$(SolutionDir)libs\TSAdapter.dll" />
+	<UsingTask TaskName="TSAMakeToml" AssemblyFile="$(SolutionDir)libs\TSAdapter.dll" />
+	<UsingTask TaskName="TSAMakeZip" AssemblyFile="$(SolutionDir)libs\TSAdapter.dll" />
 </Project>

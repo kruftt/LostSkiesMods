@@ -1,5 +1,5 @@
 ﻿using WildSkies.AI;
-namespace HeraldTracker.Patches;
+namespace HeraldTracker;
 
 class WhaleTracker
 {

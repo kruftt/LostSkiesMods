@@ -1,15 +1,19 @@
 ﻿<Project>
 	<PropertyGroup>
-		<PackageId>LostSkies.$(MSBuildProjectName)</PackageId>
 		<TargetFramework>net6.0</TargetFramework>
 		<BaseOutputPath>$(TargetDir)</BaseOutputPath>
 		<LangVersion>latest</LangVersion>
 		<Nullable>disable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DebugType>None</DebugType>
+		<PreserveCompilationContext>false</PreserveCompilationContext>
 		<RestoreAdditionalProjectSources>
 			https://api.nuget.org/v3/index.json;
 			https://nuget.bepinex.dev/v3/index.json;
 			https://nuget.samboy.dev/v3/index.json
 		</RestoreAdditionalProjectSources>
+		<SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+		<PublishProfileFullPath>$(SolutionDir)FolderProfile.pubxml</PublishProfileFullPath>
 	</PropertyGroup>
+	<Import Project="$(SolutionDir)secrets.targets"/>
 </Project>

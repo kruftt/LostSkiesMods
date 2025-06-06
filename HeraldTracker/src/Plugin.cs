@@ -8,12 +8,12 @@ public class HeraldTrackerPlugin : BasePlugin
     public override void Load()
     {
         Harmony harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
-        harmony.PatchAll(typeof(Patches.Tracker));
+        harmony.PatchAll(typeof(Tracker));
 
         if (Config.Bind<bool>("General", "Herald_Tracking", true, "Whether to track the herald.").Value)
-            harmony.PatchAll(typeof(Patches.HeraldTracker));
+            harmony.PatchAll(typeof(HeraldTracker));
 
         if (Config.Bind<bool>("General", "Whale_Tracking", true, "Whether to track whales.").Value)
-            harmony.PatchAll(typeof(Patches.WhaleTracker));
+            harmony.PatchAll(typeof(WhaleTracker));
     }
 }

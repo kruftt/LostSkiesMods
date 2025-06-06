@@ -1,0 +1,42 @@
+﻿<Project>
+	<PropertyGroup>
+		<Title>Lost Skies: $(Name)</Title>
+		<Authors>$(Author)</Authors>
+		
+		<!-- Build -->
+		<DistDir>dist\</DistDir>
+		<BundleDir>bundle\</BundleDir>
+		<AssemblyName>$(Authors.Replace(";", "-")).$(Name.Replace(" ", ""))</AssemblyName>
+		<BepInExDir>C:\Program Files (x86)\Steam\steamapps\common\Wild Skies\BepInEx\</BepInExDir>
+		<RepositoryUrl>https://github.com/kruftt/LostSkiesMods/tree/main/$(MSBuildProjectName)</RepositoryUrl>
+		
+		<!-- Package -->
+		<PackageId>LostSkies.$(Name.Replace(" ", ""))</PackageId>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageType>Dependency</PackageType>
+		<PackageProjectUrl>https://thunderstore.io/c/lost-skies/p/kruft/$(Name.Replace(" ", "_"))</PackageProjectUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Include all Lost Skies InterOps -->
+		<Reference Include="$(BepInExDir)interop\*.dll">
+			<Private>false</Private>
+		</Reference>
+		<!-- Use Harmony and BepInEx globally -->
+		<Using Include="HarmonyLib" />
+		<Using Include="BepInEx" />
+		<Using Include="BepInEx.Logging" />
+		<Using Include="BepInEx.Unity.IL2CPP" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ModCategories Include="$(Categories)" />
+		<!-- Package Dependencies -->
+		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
+		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+		<!-- For NuGet packaging -->
+		<None Include="$(BundleDir)icon.png" Pack="true" PackagePath="\"/>
+		<None Include="README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
+</Project>

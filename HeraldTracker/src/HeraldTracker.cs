@@ -1,4 +1,4 @@
-﻿namespace HeraldTracker.Patches;
+﻿namespace HeraldTracker;
 
 class HeraldTracker
 {

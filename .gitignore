@@ -16,3 +16,6 @@ packages/
 *.dll
 manifest.json
 plugins/
+secrets*
+*Properties/
+*.toml
