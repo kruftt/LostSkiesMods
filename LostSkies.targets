@@ -1,21 +1,23 @@
 ﻿<Project>
 	<PropertyGroup>
-		<Title>Lost Skies: $(Name)</Title>
+		<Title>Lost Skies: $(Product)</Title>
 		<Authors>$(Author)</Authors>
 		
 		<!-- Build -->
 		<DistDir>dist\</DistDir>
 		<BundleDir>bundle\</BundleDir>
-		<AssemblyName>$(Authors.Replace(";", "-")).$(Name.Replace(" ", ""))</AssemblyName>
+		<AssemblyName>$(Authors.Replace(";", "-")).$(Product.Replace(" ", ""))</AssemblyName>
 		<BepInExDir>C:\Program Files (x86)\Steam\steamapps\common\Wild Skies\BepInEx\</BepInExDir>
+		<!--<BepInExOutDir>C:\Users\nnrbg\AppData\Roaming\com.kesomannen.gale\lost-skies\profiles\ModTest\BepInEx\</BepInExOutDir>-->
+		<BepInExOutDir>C:\Program Files (x86)\Steam\steamapps\common\Wild Skies\BepInEx\</BepInExOutDir>
 		<RepositoryUrl>https://github.com/kruftt/LostSkiesMods/tree/main/$(MSBuildProjectName)</RepositoryUrl>
 		
 		<!-- Package -->
-		<PackageId>LostSkies.$(Name.Replace(" ", ""))</PackageId>
+		<PackageId>LostSkies.$(Product.Replace(" ", ""))</PackageId>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageType>Dependency</PackageType>
-		<PackageProjectUrl>https://thunderstore.io/c/lost-skies/p/kruft/$(Name.Replace(" ", "_"))</PackageProjectUrl>
+		<PackageProjectUrl>https://thunderstore.io/c/lost-skies/p/kruft/$(Product.Replace(" ", "_"))</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -2,7 +2,7 @@
 	<Target Name="StageMod" AfterTargets="PostBuildEvent">
 		<Copy
 			SourceFiles="$(TargetDir)$(AssemblyName).dll"
-			DestinationFolder="$(BepInExDir)plugins\"
+			DestinationFolder="$(BepInExOutDir)plugins\"
 			SkipUnchangedFiles="true"
 		/>
 	</Target>
@@ -22,7 +22,7 @@
 	<Target Name="DotnetDeployMod" AfterTargets="Publish" DependsOnTargets="DeployMod" />
 	<Target Name="DeployMod">
 		<PropertyGroup>
-			<_Name>$(Name.Replace(" ", "_"))</_Name>
+			<_Name>$(Product.Replace(" ", "_"))</_Name>
 		</PropertyGroup>
 		<ItemGroup>
 			<ZipSource Include="README.md" />
